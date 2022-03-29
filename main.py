@@ -28,10 +28,12 @@ def main():
             print(moves)
             if not moves:
                 print("RED WON")
+                run = False
             moves = get_all_moves(game.get_board(), RED, game)
             print(moves)
             if not moves:
                 print("WHITE WON")
+                run = False
             value, new_board = minimax(game.get_board(), 4, WHITE, game)
             game.ai_move(new_board)
         

@@ -24,7 +24,20 @@ def main():
     while run:
         clock.tick(FPS)
         if game.turn == WHITE:
-            moves = get_all_moves(game.get_board(),WHITE, game)
+#             moves = get_all_moves(game.get_board(),WHITE, game)
+#             print(moves)
+#             if not moves:
+#                 print("RED WON")
+#                 run = False
+#             moves = get_all_moves(game.get_board(), RED, game)
+#             print(moves)
+#             if not moves:
+#                 print("WHITE WON")
+#                 run = False
+            value, new_board = minimax(game.get_board(), 4, WHITE, game)
+            game.ai_move(new_board)
+        
+        moves = get_all_moves(game.get_board(),WHITE, game)
             print(moves)
             if not moves:
                 print("RED WON")
@@ -34,8 +47,6 @@ def main():
             if not moves:
                 print("WHITE WON")
                 run = False
-            value, new_board = minimax(game.get_board(), 4, WHITE, game)
-            game.ai_move(new_board)
         
         if game.winner() != None:
             if game.winner() == WHITE:
